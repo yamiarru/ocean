@@ -45,7 +45,10 @@ const ItemListContainer = () => {
     <div>
       <h2>Ofertas Verano 2025</h2>
       {loading ? (
-        <p>Cargando productos...</p>
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Cargando productos...</p>
+        </div>
       ) : (
         <div className="producto-grid">
           {productos.map((producto) => (

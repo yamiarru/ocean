@@ -1,5 +1,33 @@
-/* Estilo para el h2 */
-h2 {
+/* Centrar el contenedor de carga */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    flex-direction: column;
+  }
+  
+  /* Spinner (puedes usar el de Bootstrap o crear uno propio) */
+  .spinner {
+    border: 4px solid #f3f3f3; /* Fondo del spinner */
+    border-top: 4px solid #e4a3de; /* Color del spinner */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  /* Animación para el spinner */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Estilo para el h2 */
+  h2 {
     font-family: 'Roboto', sans-serif; 
     font-weight: 700; 
     font-size: 2rem; 
@@ -7,10 +35,10 @@ h2 {
     color: #333; 
     margin-top: 30px;
     margin-bottom: 20px; 
-}
-
-/* Estilo para el grid de productos */
-.producto-grid {
+  }
+  
+  /* Estilo para el grid de productos */
+  .producto-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     gap: 20px;
@@ -18,10 +46,10 @@ h2 {
     justify-items: center; 
     max-width: 1200px; 
     margin: 0 auto; 
-}
-
-/* Estilo de cada tarjeta de producto */
-.producto-card {
+  }
+  
+  /* Estilo de cada tarjeta de producto */
+  .producto-card {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -31,53 +59,54 @@ h2 {
     transition: transform 0.3s ease-in-out;
     width: 100%;
     max-width: 250px; 
-}
-
-.producto-card:hover {
+  }
+  
+  .producto-card:hover {
     transform: scale(1.05);
-}
-
-.producto-img {
+  }
+  
+  .producto-img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-}
-
-.producto-card h3 {
+  }
+  
+  .producto-card h3 {
     margin: 10px 0;
-}
-
-.producto-card p {
+  }
+  
+  .producto-card p {
     margin-bottom: 15px;
     font-size: 16px;
     color: #555;
-}
-
-/* Estilo para el detalle del producto */
-.producto-detalle {
+  }
+  
+  /* Estilo para el detalle del producto */
+  .producto-detalle {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #ddd;
     margin-top: 20px;
-}
-
-.producto-detalle img {
+  }
+  
+  .producto-detalle img {
     width: 100%;
     max-width: 300px;
     margin-bottom: 20px;
-}
-
-.producto-detalle h3 {
+  }
+  
+  .producto-detalle h3 {
     margin-bottom: 15px;
-}
-
-.producto-detalle p {
+  }
+  
+  .producto-detalle p {
     font-size: 16px;
     color: #333;
-}
-/* Estilo para el botón "Agregar al carrito" */
-.mas-info-btn {
+  }
+  
+  /* Estilo para el botón "Agregar al carrito" */
+  .mas-info-btn {
     background-color: #e4a3de; 
     color: white;
     border: none;
@@ -88,16 +117,17 @@ h2 {
     transition: background-color 0.3s ease, transform 0.3s ease;
     width: 100%; 
     box-sizing: border-box;
-}
-
-/* Efecto hover para el botón */
-.mas-info-btn:hover {
+  }
+  
+  /* Efecto hover para el botón */
+  .mas-info-btn:hover {
     background-color: #b86eb0; 
     transform: translateY(-3px); 
-}
-
-/* Efecto focus para accesibilidad */
-.mas-info-btn:focus {
+  }
+  
+  /* Efecto focus para accesibilidad */
+  .mas-info-btn:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(157, 72, 122, 0.5); /* Sombra verde */
-}
+  }
+  

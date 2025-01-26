@@ -90,3 +90,40 @@ h2 {
     outline: none;
     box-shadow: 0 0 5px rgba(157, 72, 122, 0.5);
 }
+/* Estilos para el contenedor de carga */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+  }
+  
+  /* Spinner (círculo giratorio) */
+  .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #e4a3de;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Animación de giro */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Estilo para el texto de carga */
+  .loading-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #333;
+  }
+  .no-products span {
+    font-size: 1.5rem; /* Ajustar el tamaño del emoji */
+    margin-right: 10px; /* Espaciado entre el emoji y el texto */
+  }
+    
