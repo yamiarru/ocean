@@ -1,92 +1,82 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; 
-import { getProductos, getProductoPorId } from "../../asyncmock"; 
-import './ItemListContainer.css';  
+import { useParams } from 'react-router-dom';
+import { getProductos, getProductoPorId } from '../../asyncmock';
+import './ItemListContainer.css';
+import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'; // Importar el nuevo componente
+
 const ItemListContainer = () => {
-    const [productos, setProductos] = useState([]);
-    const [productoDetalle, setProductoDetalle] = useState(null); 
-    const [loading, setLoading] = useState(true); 
+  const [productos, setProductos] = useState([]);
+  const [productoDetalle, setProductoDetalle] = useState(null); // Producto seleccionado
+  const [loading, setLoading] = useState(true);
 
-    const { categoryName } = useParams();
+  const { categoryName } = useParams();
 
-    useEffect(() => {
-        setLoading(true); 
+  useEffect(() => {
+    setLoading(true);
 
-        const fetchProductos = categoryName 
-            ? getProductos().then(respuesta => respuesta.filter(p => p.categoria === categoryName)) 
-            : getProductos();
+    const fetchProductos = categoryName
+      ? getProductos().then((respuesta) =>
+          respuesta.filter((p) => p.categoria === categoryName)
+        )
+      : getProductos();
 
-        fetchProductos
-            .then(respuesta => {
-                setProductos(respuesta);
-                setLoading(false); 
-            })
-            .catch(error => {
-                console.log(error);
-                setLoading(false);
-            });
-    }, [categoryName]); 
-
-    const obtenerProductoDetalle = (id) => {
-        getProductoPorId(id)
-            .then(producto => setProductoDetalle(producto))
-            .catch(error => console.log(error));
-    };
-
-      // Función para obtener productos filtrados
-  const fetchProductosByCategory = (category) => {
-    getProductos()
-      .then((productos) => {
-        if (category) {
-          const productosFiltrados = productos.filter(
-            (producto) => producto.categoria === category
-          );
-          setProductos(productosFiltrados);
-        } else {
-          setProductos(productos); // Mostrar todos los productos si no hay categoría
-        }
+    fetchProductos
+      .then((respuesta) => {
+        setProductos(respuesta);
+        setLoading(false);
       })
-      .catch((error) => console.error("Error al obtener productos:", error));
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }, [categoryName]);
+
+  const obtenerProductoDetalle = (id) => {
+    getProductoPorId(id)
+      .then((producto) => setProductoDetalle(producto))
+      .catch((error) => console.log(error));
   };
 
-  // Llamar a la función al cargar el componente o cambiar la categoría
-  useEffect(() => {
-    fetchProductosByCategory(categoryName);
-  }, [categoryName]);
-  
-    return (
-        <div>
-            <h2>Ofertas Verano 2025</h2>
-            {loading ? (
-                <p>Cargando productos...</p>
-            ) : (
-                <div className="producto-grid">
-                    {productos.map(producto => (
-                        <div
-                            className="producto-card"
-                            key={producto.id}
-                            onClick={() => obtenerProductoDetalle(producto.id)}
-                        >
-                            <img src={producto.img} alt={producto.nombre} className="producto-img" />
-                            <h3>{producto.nombre}</h3>
-                            <p>${producto.precio}</p>
-                            <button className="agregar-carrito-btn">Agregar al carrito</button>
-                        </div>
-                    ))}
-                </div>
-            )}
+  const cerrarDetalle = () => {
+    setProductoDetalle(null); // Cerrar el pop-up
+  };
 
-            {productoDetalle && (
-                <div className="producto-detalle">
-                    <h3>Detalle del Producto</h3>
-                    <img src={productoDetalle.img} alt={productoDetalle.nombre} className="producto-img" />
-                    <p><strong>{productoDetalle.nombre}</strong></p>
-                    <p><strong>Precio:</strong> ${productoDetalle.precio}</p>
-                    <p>{productoDetalle.descripcion}</p>
-                </div>
-            )}
+  return (
+    <div>
+      <h2>Ofertas Verano 2025</h2>
+      {loading ? (
+        <p>Cargando productos...</p>
+      ) : (
+        <div className="producto-grid">
+          {productos.map((producto) => (
+            <div className="producto-card" key={producto.id}>
+              <img
+                src={producto.img}
+                alt={producto.nombre}
+                className="producto-img"
+              />
+              <h3>{producto.nombre}</h3>
+              <p>${producto.precio}</p>
+              <button
+                className="mas-info-btn"
+                onClick={() => obtenerProductoDetalle(producto.id)}
+              >
+                Más Info
+              </button>
+            </div>
+          ))}
         </div>
-    );
+      )}
+
+      {/* Mostrar el componente ItemDetailContainer si hay un producto seleccionado */}
+      {productoDetalle && (
+        <ItemDetailContainer
+          productoDetalle={productoDetalle}
+          cerrarDetalle={cerrarDetalle}
+        />
+      )}
+    </div>
+  );
 };
 
 export default ItemListContainer;

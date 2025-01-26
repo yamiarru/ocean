@@ -19,12 +19,13 @@ const Navbar = () => {
           <li className="dropdown">
             <span>Categorías</span>
             <ul className="dropdown-content">
-              <li><Link to="/category/cuidado-de-la-piel">Cuidado de la piel</Link></li>
-              <li><Link to="/category/cuidado-del-pelo">Cuidado del pelo</Link></li>
+              <li><Link to="/category/Cuidado de la piel">Cuidado de la piel</Link></li>
+              <li><Link to="/category/Cuidado del pelo">Cuidado del pelo</Link></li>
+              <li><Link to="/category/Cuidado personal">Cuidado personal</Link></li>
             </ul>
           </li>
 
-          <li><Link to="/category/accesorios">Accesorios</Link></li> 
+          <li><Link to="/category/Accesorios">Accesorios</Link></li> 
         </ul>
       </nav>
     </header>

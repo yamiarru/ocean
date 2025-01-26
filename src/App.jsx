@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React from 'react';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ItemListContainer from './componentes/ItemListContainer/ItemListContainer';
 import Navbar from './componentes/Navbar/Navbar.jsx'; 
@@ -10,11 +9,8 @@ const App = () => {
     <Router>
       <Navbar /> 
       <Routes>
-        {/* Rutas principales */}
         <Route path="/" element={<ItemListContainer />} /> 
-        <Route path="/category/:categoryId" element={<ItemListContainer />} />
-        <Route path="/category/:categoryName" component={CategoryFilter} />
-        
+        <Route path="/category/:categoryName" element={<CategoryFilter />} /> 
         <Route path="*" element={<h1>404: Página no encontrada</h1>} /> 
       </Routes>
     </Router>
@@ -22,4 +18,3 @@ const App = () => {
 };
 
 export default App;
-

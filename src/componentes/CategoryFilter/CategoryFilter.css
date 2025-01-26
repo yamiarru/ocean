@@ -1,3 +1,12 @@
+/* CategoryFilter.css */
+
+/* Estilo para el contenedor principal */
+.producto-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 /* Estilo para el h2 */
 h2 {
     font-family: 'Roboto', sans-serif; 
@@ -9,15 +18,20 @@ h2 {
     margin-bottom: 20px; 
 }
 
+/* Texto de carga */
+.loading-text,
+.no-products {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+}
+
 /* Estilo para el grid de productos */
 .producto-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
     gap: 20px;
-    padding: 20px;
     justify-items: center; 
-    max-width: 1200px; 
-    margin: 0 auto; 
 }
 
 /* Estilo de cada tarjeta de producto */
@@ -53,30 +67,7 @@ h2 {
     color: #555;
 }
 
-/* Estilo para el detalle del producto */
-.producto-detalle {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    margin-top: 20px;
-}
-
-.producto-detalle img {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
-}
-
-.producto-detalle h3 {
-    margin-bottom: 15px;
-}
-
-.producto-detalle p {
-    font-size: 16px;
-    color: #333;
-}
-/* Estilo para el botón "Agregar al carrito" */
+/* Estilo para el botón "Más Info" */
 .mas-info-btn {
     background-color: #e4a3de; 
     color: white;
@@ -90,14 +81,12 @@ h2 {
     box-sizing: border-box;
 }
 
-/* Efecto hover para el botón */
 .mas-info-btn:hover {
     background-color: #b86eb0; 
     transform: translateY(-3px); 
 }
 
-/* Efecto focus para accesibilidad */
 .mas-info-btn:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(157, 72, 122, 0.5); /* Sombra verde */
+    box-shadow: 0 0 5px rgba(157, 72, 122, 0.5);
 }

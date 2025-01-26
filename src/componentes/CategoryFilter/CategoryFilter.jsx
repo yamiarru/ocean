@@ -1,57 +1,56 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProductos } from '../../asyncmock'; 
+import './CategoryFilter.css';
 
- const CategoryFilter = () => {
-  const { categoryName } = useParams();  // Obtener la categoría de la URL
+const CategoryFilter = () => {
+  const { categoryName } = useParams(); // Obtener la categoría de la URL
   const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);  // Para mostrar el estado de carga
+  const [loading, setLoading] = useState(true); // Para mostrar el estado de carga
 
-  // Usar useEffect para obtener productos al cargar o cambiar de categoría
   useEffect(() => {
-    setLoading(true); // Inicia el estado de carga
-    fetchProductosByCategory(categoryName);
-  }, [categoryName]);  // Dependiendo de categoryName, se actualizarán los productos
+    setLoading(true);
+    fetchProductosByCategory(categoryName); // Llamar a la función cuando cambie la categoría
+  }, [categoryName]);
 
-  // Función para obtener productos filtrados por categoría
   const fetchProductosByCategory = (category) => {
     getProductos()
-      .then(respuesta => {
-        // Filtrar productos por categoría si hay categoría definida
-        const productosFiltrados = category
-          ? respuesta.filter(producto => producto.categoria === category)
-          : respuesta;  // Si no hay categoría, mostrar todos los productos
+      .then((respuesta) => {
+        // Normalizamos el nombre de la categoría para evitar inconsistencias
+        const productosFiltrados = respuesta.filter((producto) => 
+          producto.categoria.toLowerCase() === category.toLowerCase()
+        );
 
-        setProductos(productosFiltrados);
-        setLoading(false); // Finaliza el estado de carga
+        setProductos(productosFiltrados); // Actualizar productos filtrados
+        setLoading(false); // Finalizar carga
       })
-      .catch(error => {
-        console.log(error);
+      .catch((error) => {
+        console.error(error);
         setLoading(false);
       });
   };
 
   return (
-    <div>
-      {/* Si está cargando, muestra un mensaje */}
+    <div className="producto-container">
+      <h2>{categoryName}</h2>
       {loading ? (
-        <p>Cargando productos...</p>
+        <p className="loading-text">Cargando productos...</p>
+      ) : productos.length === 0 ? (
+        <p className="no-products">No se encontraron productos en esta categoría.</p>
       ) : (
-        <div>
-          {productos.length === 0 ? (
-            <p>No se encontraron productos en esta categoría.</p>
-          ) : (
-            productos.map(producto => (
-              <div key={producto.id}>
-                <h3>{producto.nombre}</h3>
-                <p>Precio: ${producto.precio}</p>
-                <img src={producto.img} alt={producto.nombre} />
-              </div>
-            ))
-          )}
+        <div className="producto-grid">
+          {productos.map((producto) => (
+            <div className="producto-card" key={producto.id}>
+              <img className="producto-img" src={producto.img} alt={producto.nombre} />
+              <h3>{producto.nombre}</h3>
+              <p>Precio: ${producto.precio}</p>
+              <button className="mas-info-btn">Más Info</button>
+            </div>
+          ))}
         </div>
       )}
     </div>
   );
 };
+
 export default CategoryFilter;
