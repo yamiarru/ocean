@@ -1,0 +1,103 @@
+/* Estilo para el h2 */
+h2 {
+    font-family: 'Roboto', sans-serif; /* Aplica la fuente Roboto */
+    font-weight: 700; /* Fuente en negrita */
+    font-size: 2rem; /* Tamaño de la fuente */
+    text-align: center; /* Centrado del texto */
+    color: #333; /* Color oscuro para el texto */
+    margin-top: 30px; /* Espacio arriba */
+    margin-bottom: 20px; /* Espacio abajo */
+}
+
+/* Estilo para el grid de productos */
+.producto-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Mostrar 4 productos por línea */
+    gap: 20px;
+    padding: 20px;
+    justify-items: center; /* Centrar los productos dentro de la grilla */
+    max-width: 1200px; /* Para que no se expandan demasiado */
+    margin: 0 auto; /* Centrar la grilla */
+}
+
+/* Estilo de cada tarjeta de producto */
+.producto-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 250px; /* Limitar el tamaño máximo de las tarjetas */
+}
+
+.producto-card:hover {
+    transform: scale(1.05);
+}
+
+.producto-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.producto-card h3 {
+    margin: 10px 0;
+}
+
+.producto-card p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Estilo para el detalle del producto */
+.producto-detalle {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+}
+
+.producto-detalle img {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.producto-detalle h3 {
+    margin-bottom: 15px;
+}
+
+.producto-detalle p {
+    font-size: 16px;
+    color: #333;
+}
+/* Estilo para el botón "Agregar al carrito" */
+.agregar-carrito-btn {
+    background-color: #4CAF50; /* Verde bonito */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 100%; /* Para que ocupe el ancho completo del card */
+    box-sizing: border-box;
+}
+
+/* Efecto hover para el botón */
+.agregar-carrito-btn:hover {
+    background-color: #45a049; /* Un verde más oscuro */
+    transform: translateY(-3px); /* Hace que el botón suba un poco al pasar el mouse */
+}
+
+/* Efecto focus para accesibilidad */
+.agregar-carrito-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(72, 157, 72, 0.5); /* Sombra verde */
+}
