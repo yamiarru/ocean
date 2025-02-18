@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getProductos, getProductoPorId } from '../../asyncmock';
-import './ItemListContainer.css';
-import ItemDetailContainer from '../ItemDetailContainer/ItemDetailContainer'; // Importar el nuevo componente
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getProductos, getProductoPorId } from "../../asyncmock";
+import "./ItemListContainer.css";
+import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
+import { useCart } from "../UseCart/UseCart";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
-  const [productoDetalle, setProductoDetalle] = useState(null); // Producto seleccionado
+  const [productoDetalle, setProductoDetalle] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const { categoryName } = useParams();
+  const { addProductToCart } = useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +40,7 @@ const ItemListContainer = () => {
   };
 
   const cerrarDetalle = () => {
-    setProductoDetalle(null); // Cerrar el pop-up
+    setProductoDetalle(null);
   };
 
   return (
@@ -66,12 +68,17 @@ const ItemListContainer = () => {
               >
                 Más Info
               </button>
+              <button
+                className="mas-info-btn"
+                onClick={() => addProductToCart({ product: producto, quantity: 1 })}
+              >
+                Agregar al carrito
+              </button>
             </div>
           ))}
         </div>
       )}
 
-      {/* Mostrar el componente ItemDetailContainer si hay un producto seleccionado */}
       {productoDetalle && (
         <ItemDetailContainer
           productoDetalle={productoDetalle}

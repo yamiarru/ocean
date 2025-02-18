@@ -21,7 +21,7 @@ const ItemDetailContainer = ({ productoDetalle, cerrarDetalle }) => {
             <h4>{productoDetalle.nombre}</h4>
             <p className="descripcion">{productoDetalle.descripcion}</p>
             <p className="precio">${productoDetalle.precio}</p>
-            <button className="agregar-btn">Agregar al carrito</button>
+            
           </div>
         </div>
       </div>

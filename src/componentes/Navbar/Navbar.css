@@ -87,3 +87,62 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Distribuye el espacio entre elementos */
+  background-color: #333;
+  padding: 10px 0;
+   align-items: center; /* Alinea verticalmente los elementos */
+ }
+ 
+ .cart-widget-container { /* Estilos para el contenedor del carrito */
+   margin-right: 20px; /* Espacio a la derecha del carrito */
+ }
+ 
+ /* Estilos para el botón del carrito (opcional, puedes ajustarlos) */
+ .cart-button {
+   background-color: transparent; /* Fondo transparente */
+   border: none; /* Sin borde */
+   padding: 0; /* Sin padding */
+   cursor: pointer;
+ }
+ 
+ .cart-icon {
+   width: 30px; /* Tamaño del icono */
+   height: 30px;
+ }
+ 
+ /* Estilos para el Offcanvas (carrito lateral) */
+ .offcanvas {
+   width: 300px !important; /* Ancho del Offcanvas (ajustable) */
+ }
+ 
+ .offcanvas-header {
+   background-color: #333; /* Color de fondo del header */
+   color: white; /* Color de texto del header */
+ }
+ 
+ .offcanvas-title {
+   color: white; /* Color del título del Offcanvas */
+ }
+ 
+ .btn-primary {
+   background-color: #007bff !important;
+   border-color: #007bff !important;
+ }
+ .btn-danger {
+   background-color: #dc3545 !important;
+   border-color: #dc3545 !important;
+ }
+ .btn-warning {
+   background-color: #ffc107 !important;
+   border-color: #ffc107 !important;
+ }
+ .btn-secondary {
+   background-color: #6c757d !important;
+   border-color: #6c757d !important;
+ }
+ .btn-success {
+   background-color: #28a745 !important;
+   border-color: #28a745 !important;
+ }

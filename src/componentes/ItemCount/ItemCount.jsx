@@ -1,5 +1,5 @@
 import  { useState } from 'react';
-import PropTypes from 'prop-types'; // Importa PropTypes
+import PropTypes from 'prop-types'; 
 
 const ItemCount = ({ stock, onAdd }) => {
   const [count, setCount] = useState(1);

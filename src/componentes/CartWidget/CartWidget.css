@@ -1,0 +1,14 @@
+/* src/componentes/CartWidget/CartWidget.css */
+
+.cart-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .cart-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
